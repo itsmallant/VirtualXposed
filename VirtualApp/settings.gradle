@@ -1,2 +1,7 @@
 include ':lib', ':app', ':launcher'
 rootProject.name="VirtualXposed"
+include ':epic', ':exposed-api', ':exposed-core',':hiddenapistubs'
+project(':epic').projectDir = new File('weishu/epic')
+project(':exposed-api').projectDir = new File('weishu/exposed-api')
+project(':exposed-core').projectDir = new File('weishu/exposed-core')
+project(':hiddenapistubs').projectDir = new File('weishu/hiddenapistubs')
