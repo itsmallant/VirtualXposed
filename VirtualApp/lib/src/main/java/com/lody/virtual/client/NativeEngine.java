@@ -35,7 +35,7 @@ public class NativeEngine {
 
     static {
         try {
-            System.loadLibrary("va++");
+            System.loadLibrary("vrt");
         } catch (Throwable e) {
             VLog.e(TAG, VLog.getStackTraceString(e));
         }
@@ -142,7 +142,7 @@ public class NativeEngine {
 
     public static void enableIORedirect() {
         try {
-            String soPath = String.format("/data/data/%s/lib/libva++.so", VirtualCore.get().getHostPkg());
+            String soPath = String.format("/data/data/%s/lib/libvrt.so", VirtualCore.get().getHostPkg());
             if (!new File(soPath).exists()) {
                 throw new RuntimeException("io redirect failed.");
             }

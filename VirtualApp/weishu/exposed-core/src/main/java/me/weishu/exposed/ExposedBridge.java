@@ -112,7 +112,7 @@ public class ExposedBridge {
         appContext = context;
         initForPackage(context, applicationInfo);
 
-        ReLinker.loadLibrary(context, "epic");
+        ReLinker.loadLibrary(context, "env");
         ExposedHelper.initSeLinux(applicationInfo.processName);
         XSharedPreferences.setPackageBaseDirectory(new File(applicationInfo.dataDir).getParentFile());
 
@@ -356,9 +356,9 @@ public class ExposedBridge {
 
         try {
             inputStream = context.getAssets().open("xposed_init");
-            System.setProperty("epic.force", "true");
+            System.setProperty("env.force", "true");
         } catch (IOException e) {
-            Log.i(TAG, applicationInfo.packageName + " is not a Xposed module, do not init epic.force");
+            Log.i(TAG, applicationInfo.packageName + " is not a Xposed module, do not init env.force");
         } finally {
             closeSliently(inputStream);
         }
