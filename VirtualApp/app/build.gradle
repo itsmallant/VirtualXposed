@@ -1,21 +1,29 @@
 apply plugin: 'com.android.application'
+apply from: "$rootDir/config.gradle"
 
 Properties properties = new Properties()
 def localProp = file(project.rootProject.file('local.properties'))
 if (localProp.exists()) {
     properties.load(localProp.newDataInputStream())
 }
-def keyFile = file(properties.getProperty("keystore.path") ?: "/tmp/does_not_exist")
 
 android {
     signingConfigs {
-        config {
-            keyAlias properties.getProperty("keystore.alias")
-            keyPassword properties.getProperty("keystore.pwd")
-            storeFile keyFile
-            storePassword properties.getProperty("keystore.alias_pwd")
+        release {
+            keyAlias 'bookbook'
+            keyPassword 'G78AqDyqlq23TnZc'
+            storeFile file('../bookbook.jks')
+            storePassword 'G78AqDyqlq23TnZc'
+        }
+
+        debug {
+            keyAlias 'bookbook'
+            keyPassword 'G78AqDyqlq23TnZc'
+            storeFile file('../bookbook.jks')
+            storePassword 'G78AqDyqlq23TnZc'
         }
     }
+
 
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -35,20 +43,20 @@ android {
         }
     }
     // https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html?utm_source=android-studio
-    flavorDimensions 'main'
-    productFlavors {
-        aosp {
-            dimension 'main'
-            //matchingFallbacks ['aosp']
-            if (keyFile.exists()) {
-                signingConfig signingConfigs.config
-            }
-        }
-
-        fdroid {
-            dimension 'main'
-        }
-    }
+//    flavorDimensions 'main'
+//    productFlavors {
+//        aosp {
+//            dimension 'main'
+//            //matchingFallbacks ['aosp']
+//            if (keyFile.exists()) {
+//                signingConfig signingConfigs.config
+//            }
+//        }
+//
+//        fdroid {
+//            dimension 'main'
+//        }
+//    }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
@@ -70,6 +78,31 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+    flavorDimensions 'pkg'
+    productFlavors {
+        pkg1 {
+            dimension 'pkg'
+            applicationId pkg.first
+        }
+        pkg2 {
+            dimension 'pkg'
+            applicationId pkg.second
+        }
+        pkg3 {
+            dimension 'pkg'
+            applicationId pkg.third
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            def flavorDir = outputFile.parentFile.parent
+            def flavorName = flavorDir.substring(flavorDir.lastIndexOf("/pkg") + 1, flavorDir.length())
+            outputFileName = "vapp-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + buildType.name + "-" + flavorName + ".apk"
+            outputFile = new File(outputFile.parent, outputFileName)
+        }
+    }
 }
 
 dependencies {
@@ -86,9 +119,9 @@ dependencies {
     // ThirdParty
     implementation 'com.jonathanfinerty.once:once:1.0.3'
 
-    def appCenterSdkVersion = '3.0.0'
-    aospImplementation("com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}")
-    aospImplementation("com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}")
+//    def appCenterSdkVersion = '3.0.0'
+//    aospImplementation("com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}")
+//    aospImplementation("com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}")
 
     implementation 'com.kyleduo.switchbutton:library:1.4.6'
     implementation 'com.allenliu.versionchecklib:library:1.8.3'

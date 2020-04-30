@@ -1,0 +1,6 @@
+
+ext.pkg = [
+        "first":"com.miui.xrt",
+        "second":"com.miui.yrt",
+        "third":"com.miui.zrt",
+]
