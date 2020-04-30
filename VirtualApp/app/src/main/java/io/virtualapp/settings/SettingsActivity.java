@@ -108,7 +108,7 @@ public class SettingsActivity extends Activity {
             moduleManage.setOnPreferenceClickListener(preference -> {
                 try {
                     Intent t = new Intent();
-                    t.setComponent(new ComponentName("de.robv.android.xposed.installer", "de.robv.android.xposed.installer.WelcomeActivity"));
+                    t.setComponent(new ComponentName("com.miui.installer", "com.miui.installer.WelcomeActivity"));
                     t.putExtra("fragment", 1);
                     int ret = VActivityManager.get().startActivity(t, 0);
                     if (ret < 0) {

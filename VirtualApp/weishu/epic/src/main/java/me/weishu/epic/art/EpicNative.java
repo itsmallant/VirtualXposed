@@ -36,7 +36,7 @@ public final class EpicNative {
     private static volatile boolean useUnsafe = false;
     static {
         try {
-            System.loadLibrary("epic");
+            System.loadLibrary("env");
             useUnsafe = DeviceCheck.isYunOS() || !isGetObjectAvailable();
             Log.i(TAG, "use unsafe ? " + useUnsafe);
         } catch (Throwable e) {

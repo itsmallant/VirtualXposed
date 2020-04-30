@@ -17,7 +17,7 @@ public class XApp extends Application {
 
     private static final String TAG = "XApp";
 
-    public static final String XPOSED_INSTALLER_PACKAGE = "de.robv.android.xposed.installer";
+    public static final String XPOSED_INSTALLER_PACKAGE = "com.miui.installer";
 
     private static XApp gApp;
 

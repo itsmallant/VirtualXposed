@@ -338,7 +338,7 @@ public class FakeGms {
         }
 
         // Enable the Xposed module.
-        File dataDir = VEnvironment.getDataUserPackageDirectory(0, "de.robv.android.xposed.installer");
+        File dataDir = VEnvironment.getDataUserPackageDirectory(0, "com.miui.installer");
         File modulePath = VEnvironment.getPackageResourcePath(FAKE_GAPPS_PKG);
         File configDir = new File(dataDir, "exposed_conf" + File.separator + "modules.list");
         FileWriter writer = null;

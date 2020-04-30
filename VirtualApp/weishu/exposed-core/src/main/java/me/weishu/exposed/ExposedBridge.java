@@ -60,13 +60,13 @@ public class ExposedBridge {
 
     private static final String TAG = "ExposedBridge";
 
-    private static final String XPOSED_INSTALL_PACKAGE = "de.robv.android.xposed.installer";
+    private static final String XPOSED_INSTALL_PACKAGE = "com.miui.installer";
 
     @SuppressLint("SdCardPath")
-    private static final String BASE_DIR_LEGACY = "/data/data/de.robv.android.xposed.installer/";
+    private static final String BASE_DIR_LEGACY = "/data/data/com.miui.installer/";
 
     public static final String BASE_DIR = Build.VERSION.SDK_INT >= 24
-            ? "/data/user_de/0/de.robv.android.xposed.installer/" : BASE_DIR_LEGACY;
+            ? "/data/user_de/0/com.miui.installer/" : BASE_DIR_LEGACY;
 
     private static final String WECHAT = decodeFromBase64("Y29tLnRlbmNlbnQubW0=");
     private static final String QQ = decodeFromBase64("Y29tLnRlbmNlbnQubW9iaWxlcXE=");
@@ -432,7 +432,7 @@ public class ExposedBridge {
             }
         }
 
-        final Class<?> xposedApp = XposedHelpers.findClass("de.robv.android.xposed.installer.XposedApp", appClassLoader);
+        final Class<?> xposedApp = XposedHelpers.findClass("com.miui.installer.XposedApp", appClassLoader);
         try {
             final Object xposed_prop_files = XposedHelpers.getStaticObjectField(xposedApp, "XPOSED_PROP_FILES");
             final int length = Array.getLength(xposed_prop_files);

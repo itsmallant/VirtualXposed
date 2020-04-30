@@ -66,7 +66,7 @@ import static com.xiaomi.androidx.XposedHelpers.setStaticObjectField;
 	private static final boolean startsSystemServer = XposedBridge.startsSystemServer();
 	private static final String startClassName = XposedBridge.getStartClassName();
 
-	private static final String INSTALLER_PACKAGE_NAME = "de.robv.android.xposed.installer";
+	private static final String INSTALLER_PACKAGE_NAME = "com.miui.installer";
 	@SuppressLint("SdCardPath")
 	private static final String BASE_DIR = Build.VERSION.SDK_INT >= 24
 			? "/data/user_de/0/" + INSTALLER_PACKAGE_NAME + "/"

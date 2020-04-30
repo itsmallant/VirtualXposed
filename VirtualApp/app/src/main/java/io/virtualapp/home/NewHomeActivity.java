@@ -126,11 +126,11 @@ public class NewHomeActivity extends NexusLauncherActivity {
 
                 if (xposedInstallerApk.isFile() && !DeviceUtil.isMeizuBelowN()) {
                     try {
-                        if ("8537fb219128ead3436cc19ff35cfb2e".equals(MD5Utils.getFileMD5String(xposedInstallerApk))) {
+//                        if ("8537fb219128ead3436cc19ff35cfb2e".equals(MD5Utils.getFileMD5String(xposedInstallerApk))) {
                             VirtualCore.get().installPackage(xposedInstallerApk.getPath(), InstallStrategy.TERMINATE_IF_EXIST);
-                        } else {
-                            VLog.w(TAG, "unknown Xposed installer, ignore!");
-                        }
+//                        } else {
+//                            VLog.w(TAG, "unknown Xposed installer, ignore!");
+//                        }
                     } catch (Throwable ignored) {
                     }
                 }

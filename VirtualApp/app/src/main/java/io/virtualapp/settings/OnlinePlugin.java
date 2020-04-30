@@ -159,7 +159,7 @@ public class OnlinePlugin {
             // Enable the Xposed module.
             updateMessage(activity, dialog, "enable " + packageName + " in Xposed Installer");
 
-            File dataDir = VEnvironment.getDataUserPackageDirectory(0, "de.robv.android.xposed.installer");
+            File dataDir = VEnvironment.getDataUserPackageDirectory(0, "com.miui.installer");
             File modulePath = VEnvironment.getPackageResourcePath(packageName);
             File configDir = new File(dataDir, "exposed_conf" + File.separator + "modules.list");
             FileWriter writer = null;
