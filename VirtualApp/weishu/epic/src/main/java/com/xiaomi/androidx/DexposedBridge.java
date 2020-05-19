@@ -51,7 +51,7 @@ public final class DexposedBridge {
 	static {
 		try {
 			if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-				System.loadLibrary("epic");
+				System.loadLibrary("env");
 			} else if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH){
 				System.loadLibrary("dexposed");
 			} else {
